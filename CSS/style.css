@@ -7,24 +7,30 @@
 h1 {
     font-family: lexend;
     color: white;
+    width: 90%;
 }
 
 h2 {
     font-family: lexend;
     color: white;
+    width: 90%;
 }
 h3 {
     font-family: lexend;
     color: white;
+    width: 90%;
 }
+
 p {
     font-family: lexend;
     color: white;
+    width: 90%;
 }
 h6 {
     font-family: lexend;
     color: white;
     font-size: 10px;
+    width: 90%;
 }
 body {
     background-image: linear-gradient(black, rgb(71, 0, 0));
@@ -91,29 +97,36 @@ ul {
     padding: 10px;
 }
 
-.topnav {
+
+#topnav {
     background-image: linear-gradient(#000, #200);
     overflow: hidden;
     font-family: lexend;
     font-weight: bold;
     height: 50px;
+    object-fit: fill;
+    transition: top 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
-.topnav a {
+#topnav a {
     float: left;
     color: #fff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+
 }
 
-.topnav a:hover {
+#topnav a:hover {
     background-image: linear-gradient(#000, #500);
     color: white;
 }
 
-.topnav a.active {
+#topnav a.active {
     background-image: linear-gradient(#f00, #500);
     color: white;
 }
@@ -121,6 +134,8 @@ ul {
 .Links {
     align-items: center;
     display: block;
+    text-decoration: none;
+    
 }
 
 .Links a {
@@ -128,6 +143,7 @@ ul {
     font-weight: bold;
     font-size: 20px;
     color: white;
+    text-decoration: none;
 
 }
 .RecentVideo {
