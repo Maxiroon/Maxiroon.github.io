@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 h1 {
     font-family: lexend;
     color: white;
@@ -35,10 +36,15 @@ h6 {
 body {
     background-image: linear-gradient(black, rgb(71, 0, 0));
     background-attachment: fixed;
+    
 }
 footer {
     background: #000;
     width: 100%;
+    font-size: 10px;
+    font-family: lexend;
+    color: white;
+    text-decoration: none;
 }
 
 ul {
@@ -126,11 +132,6 @@ ul {
     color: white;
 }
 
-#topnav a.active {
-    background-image: linear-gradient(#f00, #500);
-    color: white;
-}
-
 #topnav a.purple {
     float: left;
     color: #fff;
@@ -147,9 +148,56 @@ ul {
     color: white;
 }
 
-#topnav a.purpleactive {
-    background-image: linear-gradient(#5900ff, #1b004d);
+#topnav a.ethereal {
+    float: left;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    background-image: linear-gradient(#6e6c3f, #233f46);
+
+}
+
+#topnav a.ethereal:hover {
+    background-image: linear-gradient(#ebe78a, #3e717d);
     color: white;
+}
+
+
+
+
+#topnav a.rainbow {
+    float: left;
+    color: #000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+        background: linear-gradient(
+        90deg,
+        #f00 0%,
+        #fa0 20%,
+        #ff0 40%,
+        #0f0 60%,
+        #00f 80%,
+        #f0f 100%
+    );
+
+}
+#topnav a.rainbow:hover {
+    background: linear-gradient(to right, #f00, #fa0 , #ff0, #0f0, #00f, #f0f, #f00, #fa0 , #ff0, #0f0, #00f, #f0f);
+    animation: rainbow_animation 3s linear infinite;
+    background-size: 400% 100%;
+}
+@keyframes rainbow_animation {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 73% 0;
+    }
 }
 
 .Links {
