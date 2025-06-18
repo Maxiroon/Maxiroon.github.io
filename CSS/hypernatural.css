@@ -50,6 +50,11 @@ body {
     color: white;
 }
 
+a {
+    color: inherit;
+} 
+
+
 p {
     width: 90%;
 }
@@ -68,7 +73,6 @@ h1 {
     width: 90%;
     text-align: left;
 }
-
 .button1 a {
     text-decoration: none;
     border: 5px solid;
@@ -84,7 +88,6 @@ h1 {
     border-radius: 12px;
     font-weight: bold;
     color: white;
-    width: 100%;
     
 }
 
@@ -131,7 +134,6 @@ h1 {
     border-radius: 12px;
     font-weight: bold;
     color: white;
-    width: 100%;
     
 }
 
@@ -155,7 +157,6 @@ h1 {
     border-radius: 12px;
     font-weight: bold;
     color: white;
-    width: 100%;
     
 }
 
@@ -179,7 +180,6 @@ h1 {
     border-radius: 12px;
     font-weight: bold;
     color: white;
-    width: 100%;
     
 }
 
@@ -203,7 +203,6 @@ h1 {
     border-radius: 12px;
     font-weight: bold;
     color: white;
-    width: 100%;
     
 }
 
