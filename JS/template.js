@@ -12,6 +12,6 @@ document.getElementById("footer").innerHTML = `
     <center>
         <img src="/media/textred.png" alt="MAXIROON" width="150px">
         <br>
-        <a href="/">Home Page</a>
+        <a href="/">Home Page</a><a>ㅤ</a><a href="/">CPI subdomain</a><a>ㅤ</a><a href="/">Hypernatural subdomain</a>
     </center>
     <br>`;
