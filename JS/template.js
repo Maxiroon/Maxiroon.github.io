@@ -4,7 +4,7 @@ document.getElementById("header").innerHTML = `
         <a href="/releases">Music</a>
         <a href="/about">About</a>
         <a href="https://cpi.maxiroon.xyz/">Community Picked Islands</a>
-        <a class="ethereal" href="/releases/msm/hypernatural">Hypernaturals</a>
+        <a class="ethereal" href="https://hypernatural.maxiroon.xyz">Hypernaturals</a>
     </div>`;
 
 document.getElementById("footer").innerHTML = `
