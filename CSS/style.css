@@ -128,23 +128,7 @@ ul {
 }
 
 #topnav a:hover {
-    background-image: linear-gradient(#000, #500);
-    color: white;
-}
-
-#topnav a.purple {
-    float: left;
-    color: #fff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    background-image: linear-gradient(#000, #1b004d);
-
-}
-
-#topnav a.purple:hover {
-    background-image: linear-gradient(#000, #5900ff);
+    background-image: linear-gradient(#000, #f00);
     color: white;
 }
 
@@ -161,6 +145,22 @@ ul {
 
 #topnav a.ethereal:hover {
     background-image: linear-gradient(#ebe78a, #3e717d);
+    color: white;
+}
+
+#topnav a.cpi {
+    float: left;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    background-image: linear-gradient(#19050b, #4b1021) ;
+
+}
+
+#topnav a.cpi:hover {
+    background-image: linear-gradient(#19050b, #dd3062);
     color: white;
 }
 
@@ -354,51 +354,3 @@ ul {
     align-items: center;
     justify-content: center;
 }
-
-form {
-    font-family: lexend;
-    color: white;
-}
-
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 2px solid #f00;
-    color: white;
-    border-radius: 10px;
-    background-color: transparent;
-    box-sizing: border-box;
-    font-family: lexend;
-  }
-
-  input[type=text]:focus {
-    border: 2px solid #555;
-  }
-  
-  input[type=submit] {
-    width: 100%;
-    background-color: #800000;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: lexend;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #800000;
-  }
-
-  select {
-    border: 2px solid #f00;
-    background-color: #200;
-  }
-
-  .TeamForm
-  {
-    width: 30%;
-  }
