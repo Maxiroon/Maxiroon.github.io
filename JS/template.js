@@ -1,8 +1,8 @@
 document.getElementById("header").innerHTML = `
     <div id="topnav">
         <a href="/">Home</a>
-        <a href="/releases">Music</a>
-        <a href="/about">About</a>
+        <a href="/music">Music</a>
+        <a href="/blog">Blog</a>
         <a class="cpi" href="https://cpi.maxiroon.xyz/">Community Picked Islands</a>
         <a class="ethereal" href="https://hypernatural.maxiroon.xyz">Hypernaturals</a>
     </div>`;
