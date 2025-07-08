@@ -9,9 +9,9 @@ window.onscroll = function() {
   prevScrollpos = currentScrollPos;
 }
 
-
-const API_KEY = 'AIzaSyCsLpH88nbyWcE-jTZbaOeHrdCf8jeUUkM';
-    const CHANNEL_ID = 'UC1P_65y49uX0wB7CRcr1XNQ'; // Example: Google Developers channel
+require('dotenv').config();
+const API_KEY = process.env.YOUTUBE_API_KEY;
+    const CHANNEL_ID = 'UC1P_65y49uX0wB7CRcr1XNQ';
 
     async function getLatestVideo() {
       const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1`;
