@@ -20,7 +20,7 @@ ul { font-family: lexend; color: white; }
     #topnav a.cpi { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; background-image: linear-gradient(#19050b, #4b1021); }
         #topnav a.cpi:hover { background-image: linear-gradient(#19050b, #dd3062); }
 .Line { margin: auto; align-items: center; display: block; text-decoration: none; }
-    .Line img { width: 5%;}
+    .Line img { width: 5%; border-radius: 25px;}
     .Line a.button { margin: auto; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
     .Line a.button:hover { background-image: linear-gradient(#f00, #500); }
 .SplitScreen { margin: auto; display: flex; justify-content: center; align-items: center; width: 90%;}
