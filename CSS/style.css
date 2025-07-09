@@ -3,15 +3,15 @@ body { background-image: linear-gradient(#700, #100); background-attachment: fix
 p {margin-left: 2%; margin-right: 2%;}
 footer { background: #000; width: 100%; font-size: 10px; font-family: lexend; color: white; text-decoration: none; }
 ul { font-family: lexend; color: white; }
-.button a { margin: auto; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
-    .button a:hover { background-image: linear-gradient(#f00, #500); }
+img { border: 5px solid white; border-radius: 25px; margin: auto} 
+.button { margin:auto; padding: 20px 10px;  font-size: 16px; cursor: pointer; }
+    .button a { background-image: linear-gradient(#500, #200); padding: 10px 20px; border-radius: 25px; border: solid white 3px; text-decoration: none;}
+        .button a:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
+        .button a:active { background-image: linear-gradient(#000, #000); border-color: #000;}
     .button a.cpi {background-image: linear-gradient(#4b1021, #19050b);}
         .button a.cpi:hover {background-image: linear-gradient(#dd3062, #dd3062);}
     .button a.ethereal {background-image: linear-gradient(#6e6c3f, #233f46);}
         .button a.ethereal:hover {background-image: linear-gradient(#ebe78a, #3e717d);}
-.bgDiscord { width: 95%; background-color: #5865F2; border: 5px solid white; border-radius: 50px; padding: 10px; }
-    .bgDiscord a { background-color: #1e1f22; color: #5865F2; padding: 15px 32px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 12px; }
-        .bgDiscord a:hover { background-color: #fff; color: #5865F2; }
 #topnav { background-image: linear-gradient(#000, #200); height: 50px; object-fit: fill; transition: top 0.3s; position: fixed; top: 0; width: 100%; }
     #topnav a { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; }
         #topnav a:hover { background-image: linear-gradient(#000, #f00); }
@@ -19,13 +19,19 @@ ul { font-family: lexend; color: white; }
         #topnav a.ethereal:hover { background-image: linear-gradient(#ebe78a, #3e717d);}
     #topnav a.cpi { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; background-image: linear-gradient(#19050b, #4b1021); }
         #topnav a.cpi:hover { background-image: linear-gradient(#19050b, #dd3062); }
-.Line { margin: auto; align-items: center; display: block; text-decoration: none; }
-    .Line img { width: 5%; border-radius: 25px;}
-    .Line a.button { margin: auto; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
-    .Line a.button:hover { background-image: linear-gradient(#f00, #500); }
+.Line { margin: auto; align-items: center; display: block; text-decoration: none;}
+    .Line img { width: 5%; border: 3px solid white; border-radius: 10px; transition: transform 0.2s ease, border-color 0.2s ease, filter 0.2s ease;}
+        .Line img:hover {transform: scale(1.05); border-color: red; filter: brightness(1.5);}
+        .Line img:active { transform: scale(0.95); border-color: black; filter: brightness(0.5);}
+    .Line a.button { margin: 5px; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
+        .Line a.button:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
+        .Line a.button:active { background-image: linear-gradient(#000, #000); border-color: #000;}
 .SplitScreen { margin: auto; display: flex; justify-content: center; align-items: center; width: 90%;}
     .SplitScreen a {align-content: center;}
-    .SplitScreen iframe {width: 480px; height: 270px;}
+    .SplitScreen iframe {width: 480px; height: 270px; border-radius: 10px;}
 .FAQ {font-size: 25px; text-align: left; margin-left: 2%; margin-right: 2%;}
-    .FAQ a.indent {font-size: 20px; text-indent:25px; text-align: left;}
     .FAQ a.answer {font-size: 20px; text-align: left;}
+.center { height: 100vh; display: flex; justify-content: center; align-items: center; border: 20px solid #f00; border-radius: 50px; }
+    .center a.button { margin: 5px; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
+        .center a.button:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
+        .center a.button:active { background-image: linear-gradient(#000, #000); border-color: #000;}
