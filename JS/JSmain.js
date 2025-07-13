@@ -10,7 +10,7 @@ window.onscroll = function() {
 }
 
 require('dotenv').config();
-const API_KEY = process.env.YOUTUBE_API_KEY;
+const API_KEY = AIzaSyCsLpH88nbyWcE-jTZbaOeHrdCf8jeUUkM
     const CHANNEL_ID = 'UC1P_65y49uX0wB7CRcr1XNQ';
 
     async function getLatestVideo() {
