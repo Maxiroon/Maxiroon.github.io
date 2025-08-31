@@ -5,45 +5,75 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/CSS/style.css">
 <script src="/JS/JSmain.js"></script>
-
-
-<title>Copyright Free Songs - Maxiroon</title>
-<link rel="icon" type="image/x-icon" href="/media/favicon.ico">
+<title>Music - Maxiroon</title>
+<link rel="icon" href="/media/favicon.ico">
 
 <script src="/JS/template.js" defer></script>
 <div id="nav"></div>
-<div id="heading"></div>
-
-
-<head>
-    <center>
-        <h1>My Singing Monsters</h1>
-        <p>I've made many fanmade islands for My Singing Monsters. Below is a list of them all!</p>
-        <div class="button"><a href="/music/">Return to Main Song page</a></div><br>
-        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support future music!', '#72a4f2', 'L3L01FC6QK');kofiwidget2.draw();</script>
-    </center>
-    
-</head>
-
+<style>
+    .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px; justify-content: center; }
+    .cards-card h3 { margin: 10px 0 5px; font-size: 50px; }
+    .cards-card p { font-size: 20px; color: white; margin: 0 10px 10px; min-height: 0px; }
+    .cards-card a { display: inline-block; margin: 5px; padding: 6px 20%; text-decoration: none; color: white; background: #e24a4a; border-radius: 6px; transition: background 0.2s; }
+</style>
 <body>
+    <h1 style="font-size: 60px;">Fanmade MSM Content</h1>
+    <div class="button"><a href="/music" style="padding: 5px 25%;">Back</a></div>
+  <div class="cards-grid" id="cardGrid">
+    <!-- Blog Entries go here -->
+  </div>
+  <br><br>
 
-    <center>
-        
-        <br><br>
-            <h1 style="font-size: 50px;">Community Picked Islands Series</h1>
-            <p style="font-size:20px;">Fan islands decided by the Maxiroon community!</p>
-            <div class="button"><a class="cpi" href="https://cpi.maxiroon.xyz/">Visit site</a></div><br>
+  <script>
+    const blogPosts = [
+      {
+        title: "Community Picked Islands Series",
+        desc: "A collection of islands where the casts were chosen by the Maxiroon Community!",
+        link: "https://cpi.maxiroon.xyz",
+        image: "/media/MusicCovers/cpi.png"
+      },
+      {
+        title: "Hypernaturals",
+        link: "./msm",
+        desc: "A collection of five islands which feature new natural-ethereal hybrids!",
+        image: "/media/MusicCovers/hn.png"
+      },
+      {
+        title: "Fanmade Islands Recomposed",
+        link: "https://www.youtube.com/@MSMFanmadeIslandsRecomposed/",
+        desc: "A project owned by Maxiroon which gives fanmade casts brand new songs!",
+        image: "/media/MusicCovers/fir.png"
+      },
+      {
+        title: "Full List",
+        link: "./singles",
+        desc: "A playlist of all of Maxiroon's fanmade MSM songs, including one-offs not listed here.",
+        image: "/media/MusicCovers/MSM.png"
+      }
+    ];
 
-            <h1 style="font-size: 50px;">Hypernaturals</h1>
-            <p style="font-size:20px;">A collection of five islands featuring a new Hypernaturals class!</p>
-            <div class="button"><a class="ethereal" href="https://hypernatural.maxiroon.xyz">Visit site</a></div><br>
+    const grid = document.getElementById('cardGrid');
 
-            <h1 style="font-size: 50px;">Full List</h1>
-            <p style="font-size:20px;">A playlist with all Maxiroon fanmade islands, including one-off islands not listed here.</p>
-            <div class="button"><a href="https://www.youtube.com/playlist?list=PLhvatQl4VNdL7LO7hX84Vna56_AlMjboS">YouTube playlist</a></div><br>
-        <br><br><br>
-        
-    </center>
+    blogPosts.forEach(post => {
+      const card = document.createElement('div');
+      card.classList.add('cards-card');
+
+      // if there's no image, show a placeholder text
+      const imageHTML = post.image
+        ? `<img class="cards-image" src="${post.image}" alt="${post.title}">`
+        : `<div class="cards-image">NO IMAGE</div>`;
+
+      card.innerHTML = `
+        ${imageHTML}
+        <h3>${post.title}</h3>
+        <hr>
+        <p>${post.desc}</p>
+        <a href="${post.link}">Go</a>
+      `;
+
+      grid.appendChild(card);
+    });
+  </script>
 </body>
 
 <footer>
@@ -53,6 +83,5 @@
     </center>
     <br>
 </footer>
-
 
 </html>

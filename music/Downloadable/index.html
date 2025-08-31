@@ -5,39 +5,90 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/CSS/style.css">
 <script src="/JS/JSmain.js"></script>
-
-
-<title>Downloadable Songs - Maxiroon</title>
-<link rel="icon" type="image/x-icon" href="/media/favicon.ico">
-
-<nav><script src="/JS/template.js" defer></script><div id="header"></div></nav>
+<title>Music - Maxiroon</title>
+<link rel="icon" href="/media/favicon.ico">
 
 <script src="/JS/template.js" defer></script>
 <div id="nav"></div>
-<div id="heading"></div>
 
 <body>
+    <h1 style="font-size: 60px;">Downloadable Songs</h1>
+    <div class="button"><a href="/music" style="padding: 5px 25%;">Back</a></div>
+    <br>
+<center>
+<div class="center-wrap">
+    <div class="collection">
+    <div class="header">
+        <img src="/media/songCover/download1.png" alt="Album Cover" class="cover">
+        <div class="album-info">
+        <h2>Harmony</h2>
+        <p>Released: August 2024</p>
+        <a href="https://music.youtube.com/playlist?list=OLAK5uy_kydOlCbCTeADS99Ll2P7serKeGa7k0M3U" target="_blank">Listen</a>
+        </div>
+    </div>
 
-    <center>
-        <h1>Downloadable songs!</h1>
-        <p>Collections of downloadable music! Click a song's name to download. Click the collection name to listen to the album.</p><br>
-        <div class="button"><a href="/music/">Return to Main Song page</a></div><br><br>
-        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support future music!', '#72a4f2', 'L3L01FC6QK');kofiwidget2.draw();</script> 
-        <br><br><br>
-        <a href="https://www.youtube.com/playlist?list=OLAK5uy_mVO8bLSOnD7WvEIrxFTq9CABCFTmzAaOI" style="font-size: 50px;">Collection 1 - Harmony</a>
-            <p>A collection inspired by video game music! Release 2 Aug, 2024</p>
-            <a href="/media/music/01-01 Clockwork.wav" download>Clockwork</a><br>
-            <a href="/media/music/01-02 Sandstone (Intro).wav" download>Sandstone Intro </a><a> | </a><a href="/media/music/01-02 Sandstone (Loop).wav" download> Sandstone Loop</a><br>
-            <a href="/media/music/01-03 Grass.wav" download>Grass</a><br>
-            <a href="/media/music/01-04 Droplet.wav" download>Droplet</a><br>
-        <a href="https://www.youtube.com/playlist?list=OLAK5uy_mJsoZxXiRWhq6TUYFeNRZpmjQ3ZXM0Czk" style="font-size: 50px;">Collection 2 - Battery</a>
-            <p>A collection that gets lower in energy as you go! Released 2 June, 2025</p>
-            <a href="/media/music/02-01 Electric.wav" download>Electric</a><br>
-            <a href="/media/music/02-02 Equidistant.wav" download>Equidistant</a><br>
-            <a href="/media/music/02-03 Low.wav" download>Low</a><br>
-        <br><br><br>
-        
-    </center>
+    <div class="dropdown">
+        <button class="dropdown-button">Download Songs</button>
+        <div class="dropdown-menu">
+        <a href="/media/music/01-01 Clockwork.wav" download>Clockwork</a>
+        <a href="/media/music/01-02 Sandstone (Intro).wav" download>Sandstone (Intro)</a>
+        <a href="/media/music/01-02 Sandstone (Loop).wav" download>Sandstone (Loop)</a>
+        <a href="/media/music/01-03 Grass.wav" download>Grass</a>
+        <a href="/media/music/01-04 Droplet.wav" download>Droplet</a>
+        </div>
+    </div>
+    </div>
+</div>
+<br><br>
+<div class="center-wrap">
+    <div class="collection">
+    <div class="header">
+        <img src="/media/songCover/download2.png" alt="Album Cover" class="cover">
+        <div class="album-info">
+        <h2>Battery</h2>
+        <p>Released: June 2025</p>
+        <a href="https://music.youtube.com/playlist?list=OLAK5uy_mJsoZxXiRWhq6TUYFeNRZpmjQ3ZXM0Czk" target="_blank">Listen</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropdown-button">Download Songs</button>
+        <div class="dropdown-menu">
+        <a href="/media/music/02-01 Electric.wav" download>Electric</a>
+        <a href="/media/music/02-02 Equidistant.wav" download>Equidistant</a>
+        <a href="/media/music/02-03 Low.wav" download>Low</a>
+        </div>
+    </div>
+    </div>
+</div>
+<br><br>
+</center>
+<script>
+  // Select all dropdowns on the page
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  dropdowns.forEach(dropdown => {
+    const button = dropdown.querySelector('.dropdown-button');
+
+    button.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent window click from immediately closing
+      // Toggle this dropdown
+      dropdown.classList.toggle('show');
+      // Close all other dropdowns
+      dropdowns.forEach(other => {
+        if(other !== dropdown) {
+          other.classList.remove('show');
+        }
+      });
+    });
+  });
+
+  // Close all dropdowns if clicked outside
+  window.addEventListener('click', () => {
+    dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
+  });
+</script>
+
 </body>
 
 <footer>
@@ -47,6 +98,5 @@
     </center>
     <br>
 </footer>
-
 
 </html>

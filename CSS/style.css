@@ -35,3 +35,39 @@ img { border: 5px solid white; border-radius: 25px; margin: auto}
     .center a.button { margin: 5px; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
         .center a.button:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
         .center a.button:active { background-image: linear-gradient(#000, #000); border-color: #000;}
+
+
+.cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 15px; justify-content: center;}
+.cards-card { background-image: linear-gradient(#f00, #200); border: 5px solid #fff; border-radius: 25px; overflow: hidden; text-align: center; box-shadow: 0px 2px 5px rgba(0,0,0,0.1); transition: border-color 0.3s ease;}
+    .cards-card hr { width: 80%; margin-left: auto; margin-right: auto; margin-top: 5px; margin-bottom: 5px; }
+    .cards-card:hover { background-image: linear-gradient(#800, #800); border-color: red;}
+    .cards-card h1 { margin: 10px 0 5px; font-size: 25px; }
+    .cards-card h3 { margin: 0px; font-size: 14px;}
+    .cards-card p { font-size: 14px; color: white; margin: 0px; min-height: 40px; }
+    .cards-card a { display: inline-block; margin: 5px; padding: 6px 12px; text-decoration: none; color: white; background: #e24a4a; border-radius: 6px; transition: background 0.2s; }
+        .cards-card a:hover { background: #bd3535; }
+.cards-image { width: 100%; height: 150px; display: flex; align-items: center; justify-content: center; background: #850000; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
+.center-wrap { display: flex; justify-content: center;}
+.collection { margin: 5px; background: #800; border-radius: 12px; padding: 20px; width: 750px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.header { display: flex; align-items: center; }
+    .header img {width: 25%; height: 25%; margin: 0px; margin-right: 0px;}
+.cover { width: 120px; height: 120px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.album-info {flex-grow: 1; }
+    .album-info h2 { margin: 0; font-size: 50px; color: #fff; }
+    .album-info p { margin: 5px 0; color: #aaa; font-size: 20px;}
+    .album-info a { margin: 0; color: #007BFF; text-decoration: none; font-size: 20px;}
+.dropdown { position: relative; }
+    .dropdown-button { background: #ff0000; color: white; padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+    .dropdown-menu { display: none; position: absolute; top: 45px; left: 0; background: #772828; border: 1px solid #ddd; border-radius: 8px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10;}
+        .dropdown-menu a { display: block; padding: 10px 15px; text-decoration: none; color: white; border-bottom: 1px solid #eee; }
+            .dropdown-menu a:hover { background: #fff; color: black; }
+  .dropdown.show .dropdown-menu { display: block; }
+.faq-question { width: 100%; text-align: left; background: none; border: none; font-size: 1.1em; padding: 0.5em 0.5em; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+    .faq-question.active .arrow { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s ease, opacity 0.5s ease; padding: 0 1em; background: #f9f9f9; border-left: 5px solid #f00; padding: 5px 0px; border-radius: 5px;
+}    .faq-answer p {color: black;}
+    .faq-answer.show { opacity: 1; max-height: 1000px; }
+.arrow { transition: transform 0.3s; }
+html {scroll-behavior: smooth;}
+audio::-webkit-media-controls-enclosure { background-color: #d37c7c; color: #fff; }
+.header-image { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #850000; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }

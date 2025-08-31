@@ -5,38 +5,78 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/CSS/style.css">
 <script src="/JS/JSmain.js"></script>
-
-<title>Songs - Maxiroon</title>
-<link rel="icon" type="image/x-icon" href="/media/favicon.ico">
+<title>Music - Maxiroon</title>
+<link rel="icon" href="/media/favicon.ico">
 
 <script src="/JS/template.js" defer></script>
 <div id="nav"></div>
-<div id="heading"></div>
+<style>
+    .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px; justify-content: center; }
+    .cards-card h3 { margin: 10px 0 5px; font-size: 50px; }
+    .cards-card p { font-size: 20px; color: white; margin: 0 10px 10px; min-height: 0px; }
+    .cards-card a { display: inline-block; margin: 5px; padding: 6px 20%; text-decoration: none; color: white; background: #e24a4a; border-radius: 6px; transition: background 0.2s; }
+</style>
 
+<head>
+  <meta charset="UTF-8">
+</head>
 <body>
+    <h1 style="font-size: 60px;">Maxiroon's Music</h1>
+  <div class="cards-grid" id="cardGrid">
+    <!-- Blog Entries go here -->
+  </div>
+  <br><br>
 
-    <center>
-        <h1 style="font-size: 50px;">My Music!</h1>
-        <p>My life and internet presense is heavily centered around music. On this page, you can find links to all of my music related things. </p>
-        <br><script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support future music!', '#72a4f2', 'L3L01FC6QK');kofiwidget2.draw();</script><br><br> 
+  <script>
+    const blogPosts = [
+      {
+        title: "Downloadable",
+        desc: "Collections of music which you can dowload directly!",
+        link: "./Downloadable",
+        image: "/media/MusicCovers/Download.png"
+      },
+      {
+        title: "My Singing Monsters",
+        link: "./msm",
+        desc: "A list of all fanmade creations for My Singing Monsters!",
+        image: "/media/MusicCovers/MSM.png"
+      },
+      {
+        title: "Singles and Albums",
+        link: "./singles",
+        desc: "A collection of songs written (and sometimes sung) by Maxiroon!",
+        image: "/media/MusicCovers/Music.png"
+      },
+      {
+        title: "Ko-fi",
+        link: "https://ko-fi.com/maxiroon",
+        desc: "Want to support me? Consider donating to my Ko-fi so I can create better content!",
+        image: "/media/MusicCovers/Kofi.png"
+      }
+    ];
 
-            <p style="font-size: 35px;">Downloadable Songs</p>
-            <p>Collections of music which you can dowload directly!</p>
-            <div class="button"><a href="./Downloadable/">Visit</a></div><br>
+    const grid = document.getElementById('cardGrid');
 
-            <p style="font-size: 35px;">My Singing Monsters</p>
-            <p>The Maxiroon channel is heavily focused on the game My Singing Monsters. Many fanmade islands and predictions have been made.</p>
-            <div class="button"><a href="./msm/">Visit</a></div><br>
+    blogPosts.forEach(post => {
+      const card = document.createElement('div');
+      card.classList.add('cards-card');
 
-            <p style="font-size: 35px;">Singles</p>
-            <p>A collection of singles which Maxioon is not so proud of.</p>
-            <div class="button"><a href="./singles/">Visit</a></div><br>
+      // if there's no image, show a placeholder text
+      const imageHTML = post.image
+        ? `<img class="cards-image" src="${post.image}" alt="${post.title}">`
+        : `<div class="cards-image">NO IMAGE</div>`;
 
-            <!-- <p style="font-size: 35px;">Albums</p>
-            <p>Collections of music!</p>
-            <div class="button"><a href="./albums/">Visit</a></div><br> -->
-        
-    </center>
+      card.innerHTML = `
+        ${imageHTML}
+        <h3>${post.title}</h3>
+        <hr>
+        <p>${post.desc}</p>
+        <a href="${post.link}">Go</a>
+      `;
+
+      grid.appendChild(card);
+    });
+  </script>
 </body>
 
 <footer>
@@ -46,6 +86,5 @@
     </center>
     <br>
 </footer>
-
 
 </html>

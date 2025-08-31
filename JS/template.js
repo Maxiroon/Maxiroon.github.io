@@ -11,11 +11,7 @@ document.getElementById("nav").innerHTML = `
     <nav>
     `;
 
-document.getElementById("heading").innerHTML = `
-    <head>
-        <center><img src="/media/textgradient.png" alt="MAXIROON" style="border-width: 0px; border-radius: 0px;">
-        <hr><br><br>
-    </head>`;
+
 
 document.getElementById("footer").innerHTML = `
     <br>
@@ -25,3 +21,9 @@ document.getElementById("footer").innerHTML = `
         <a href="/" style="color: white;">Home Page</a><a>ㅤ</a><a href="https://cpi.maxiroon.xyz" style="color: white;">CPI subdomain</a><a>ㅤ</a><a href="https://hypernatural.maxiroon.xyz" style="color: white;">Hypernatural subdomain</a>
     </center>
     <br>`;
+
+document.getElementById("heading").innerHTML = `
+    <head>
+        <center><img src="/media/textgradient.png" alt="MAXIROON" style="border-width: 0px; border-radius: 0px;">
+        <hr><br><br>
+    </head>`;
