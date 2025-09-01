@@ -1,9 +1,15 @@
+/* PAGE STYLE */
 * { padding: 0; margin: 0; box-sizing: border-box; font-family: lexend; font-weight: bold; color: white; text-align: center;}
-body { background-image: linear-gradient(#700, #100); background-attachment: fixed; }
+body { background: #400; background-image: linear-gradient(#800, #400); background-attachment: fixed; }
 p {margin-left: 2%; margin-right: 2%;}
 footer { background: #000; width: 100%; font-size: 10px; font-family: lexend; color: white; text-decoration: none; }
 ul { font-family: lexend; color: white; }
 img { border: 5px solid white; border-radius: 25px; margin: auto} 
+html {scroll-behavior: smooth;}
+audio::-webkit-media-controls-enclosure { background-color: #d37c7c; color: #fff; }
+hr {color: white;}
+
+/* BUTTON STYLE */
 .button { margin:auto; padding: 20px 10px;  font-size: 16px; cursor: pointer; }
     .button a { background-image: linear-gradient(#500, #200); padding: 10px 20px; border-radius: 25px; border: solid white 3px; text-decoration: none;}
         .button a:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
@@ -12,6 +18,8 @@ img { border: 5px solid white; border-radius: 25px; margin: auto}
         .button a.cpi:hover {background-image: linear-gradient(#dd3062, #dd3062);}
     .button a.ethereal {background-image: linear-gradient(#6e6c3f, #233f46);}
         .button a.ethereal:hover {background-image: linear-gradient(#ebe78a, #3e717d);}
+
+/* TOPNAV STYLE */
 #topnav { background-image: linear-gradient(#000, #200); height: 50px; object-fit: fill; transition: top 0.3s; position: fixed; top: 0; width: 100%; }
     #topnav a { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; }
         #topnav a:hover { background-image: linear-gradient(#000, #f00); }
@@ -20,23 +28,19 @@ img { border: 5px solid white; border-radius: 25px; margin: auto}
     #topnav a.cpi { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; background-image: linear-gradient(#19050b, #4b1021); }
         #topnav a.cpi:hover { background-image: linear-gradient(#19050b, #dd3062); }
 .Line { margin: auto; align-items: center; display: block; text-decoration: none;}
-    .Line img { width: 5%; border: 3px solid white; border-radius: 10px; transition: transform 0.2s ease, border-color 0.2s ease, filter 0.2s ease;}
+    .Line img { width: 100px; border: 3px solid white; border-radius: 10px; transition: transform 0.2s ease, border-color 0.2s ease, filter 0.2s ease;}
         .Line img:hover {transform: scale(1.05); border-color: red; filter: brightness(1.5);}
         .Line img:active { transform: scale(0.95); border-color: black; filter: brightness(0.5);}
     .Line a.button { margin: 5px; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
         .Line a.button:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
         .Line a.button:active { background-image: linear-gradient(#000, #000); border-color: #000;}
+
 .SplitScreen { margin: auto; display: flex; justify-content: center; align-items: center; width: 90%;}
     .SplitScreen a {align-content: center;}
-    .SplitScreen iframe {width: 480px; height: 270px; border-radius: 15px; border: 5px solid white;}
-.FAQ {font-size: 25px; text-align: left; margin-left: 2%; margin-right: 2%;}
-    .FAQ a.answer {font-size: 20px; text-align: left;}
-.center { height: 100vh; display: flex; justify-content: center; align-items: center; border: 20px solid #f00; border-radius: 50px; }
-    .center a.button { margin: 5px; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
-        .center a.button:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
-        .center a.button:active { background-image: linear-gradient(#000, #000); border-color: #000;}
+    .SplitScreen iframe {width: 720px; height: 405px;border-radius: 15px; border: 5px solid white;}
+    .SplitScreen-container {min-width: 720px; min-height: 405px; }
 
-
+/* CARDS STYLE */
 .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 15px; justify-content: center;}
 .cards-card { background-image: linear-gradient(#f00, #200); border: 5px solid #fff; border-radius: 25px; overflow: hidden; text-align: center; box-shadow: 0px 2px 5px rgba(0,0,0,0.1); transition: border-color 0.3s ease;}
     .cards-card hr { width: 80%; margin-left: auto; margin-right: auto; margin-top: 5px; margin-bottom: 5px; }
@@ -48,26 +52,33 @@ img { border: 5px solid white; border-radius: 25px; margin: auto}
         .cards-card a:hover { background: #bd3535; }
 .cards-image { width: 100%; height: 150px; display: flex; align-items: center; justify-content: center; background: #850000; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
 .center-wrap { display: flex; justify-content: center;}
-.collection { margin: 5px; background: #800; border-radius: 12px; padding: 20px; width: 750px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-.header { display: flex; align-items: center; }
+select { color: white; background-color: #200;}
+
+/* SONG CARDS STYLE */
+.collection { margin: 5px; background-image: linear-gradient(#800, #500); border-radius: 12px; padding: 20px; width: 750px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 5px solid #fff; border-radius: 25px;}
+.header { display: flex; align-items: center;}
     .header img {width: 25%; height: 25%; margin: 0px; margin-right: 0px;}
-.cover { width: 120px; height: 120px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+.cover { width: 120px; height: 120px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
 .album-info {flex-grow: 1; }
     .album-info h2 { margin: 0; font-size: 50px; color: #fff; }
     .album-info p { margin: 5px 0; color: #aaa; font-size: 20px;}
     .album-info a { margin: 0; color: #007BFF; text-decoration: none; font-size: 20px;}
+
+/* HOME PAGE STYLES */
 .dropdown { position: relative; }
     .dropdown-button { background: #ff0000; color: white; padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
-    .dropdown-menu { display: none; position: absolute; top: 45px; left: 0; background: #772828; border: 1px solid #ddd; border-radius: 8px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10;}
+    .dropdown-menu { display: none; position: absolute; top: 45px; left: 0; background: #772828; border: 1px solid #ddd; border-radius: 10px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10;}
         .dropdown-menu a { display: block; padding: 10px 15px; text-decoration: none; color: white; border-bottom: 1px solid #eee; }
             .dropdown-menu a:hover { background: #fff; color: black; }
   .dropdown.show .dropdown-menu { display: block; }
 .faq-question { width: 100%; text-align: left; background: none; border: none; font-size: 1.1em; padding: 0.5em 0.5em; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
     .faq-question.active .arrow { transform: rotate(180deg); }
-.faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s ease, opacity 0.5s ease; padding: 0 1em; background: #f9f9f9; border-left: 5px solid #f00; padding: 5px 0px; border-radius: 5px;
+.faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s ease, opacity 0.5s ease; padding: 0 1em; background: #f9f9f9; border-left: 5px solid #f00; padding: 5px 0px; border-radius: 10px;
 }    .faq-answer p {color: black;}
     .faq-answer.show { opacity: 1; max-height: 1000px; }
 .arrow { transition: transform 0.3s; }
-html {scroll-behavior: smooth;}
-audio::-webkit-media-controls-enclosure { background-color: #d37c7c; color: #fff; }
+input { color: white; background-color: #200;}
+mark { background: #ffffff; color: red; padding: 0 2px; border-radius: 3px; }
+
 .header-image { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #850000; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
+.about-image img { border-left: 0px; border-bottom-left-radius: 0px; border-top-left-radius: 0px;}

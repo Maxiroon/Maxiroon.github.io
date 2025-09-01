@@ -18,6 +18,23 @@
 <body>
   <center>
   <h1 style="font-size: 60px;">Maxiroon's Blog</h1>
+  <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
+  <input 
+    type="text" 
+    id="blogSearch" 
+    placeholder="Search..." 
+    style="padding: 10px; width: 60%; max-width: 400px; border-radius: 10px; border: 2px solid #ffffff;"
+  >
+  <select id="blogSort" style="padding: 10px; border-radius: 10px; border: 2px solid #ffffff; color: white;">
+    <option value="date-newest">Date: newest</option>
+    <option value="date-oldest">Date: oldest</option>
+    <option value="update-newest">Recently Updated</option>
+    <hr>
+    <option value="category-music">Category: Music</option>
+    <option value="category-website">Category: Website</option>
+    <option value="category-youtube">Category: YouTube</option>
+  </select>
+</div>
   <div class="cards-grid" id="blogGrid">
     <!-- Blog Entries go here -->
   </div></center>
@@ -26,23 +43,54 @@
 async function loadPosts() {
   const grid = document.getElementById("blogGrid");
 
-  // helper to format date locally 💖
   function formatDate(dateStr) {
     if (!dateStr || dateStr === "Unknown") return "Unknown";
-    const [year, month, day] = dateStr.split("-").map(Number);
-    const d = new Date(2000 + year % 100, month - 1, day); // ensure 20YY
-    return d.toLocaleDateString("en-US", {
+    // Accepts "YYYY-MM-DD" or "YY-MM-DD" (fallback from filename)
+    let y, m, d;
+    if (dateStr.includes(".")) {
+      // just in case a dotted format sneaks in
+      [y, m, d] = dateStr.split(".").map(Number);
+      y = 2000 + (y % 100);
+    } else {
+      [y, m, d] = dateStr.split("-").map(Number);
+      if (y < 100) y = 2000 + y; // convert 25 -> 2025
+    }
+    const local = new Date(y, m - 1, d);
+    return local.toLocaleDateString("en-US", {
       day: "2-digit",
       month: "short",
       year: "numeric"
     });
   }
 
-  // fetch list of posts ✨
+  function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, c => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[c]));
+  }
+
+  function highlight(text, query) {
+    if (!query) return escapeHTML(text);
+    const re = new RegExp(escapeRegExp(query), "gi");
+    let result = "";
+    let last = 0;
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      result += escapeHTML(text.slice(last, m.index));
+      result += "<span class='highlight'>" + escapeHTML(m[0]) + "</span>";
+      last = m.index + m[0].length;
+    }
+    result += escapeHTML(text.slice(last));
+    return result;
+  }
+
   const res = await fetch("/blog/posts.json");
   let posts = await res.json();
 
-  // sort newest first 🌹
   posts.sort((a, b) => {
     const [aY, aM, aD] = a.replace(".html","").split(".").map(Number);
     const [bY, bM, bD] = b.replace(".html","").split(".").map(Number);
@@ -51,57 +99,130 @@ async function loadPosts() {
     return dateB - dateA; // newest first
   });
 
+  const cards = [];
+
   for (const file of posts) {
     try {
       const htmlRes = await fetch(`/blog/${file}`);
       const html = await htmlRes.text();
-
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, "text/html");
 
-      // grab H1 title 💕
       const title = doc.querySelector("h1")?.textContent.trim() || "Untitled";
-
-      // grab metadata 🌹
-      const postDateRaw = doc.querySelector("meta[name='post-date']")?.content || file.split(".").slice(0,3).join("-"); // fallback to filename
-      const updateDateRaw = doc.querySelector("meta[name='update-date']")?.content || "Unknown";
+      const postDateRaw = doc.querySelector("meta[name='post-date']")?.content || file.split(".").slice(0,3).join("-");
+      const updateDateRaw = doc.querySelector("meta[name='update-date']")?.content || postDateRaw;
       const coverImage = doc.querySelector("meta[name='cover-image']")?.content || "";
+      const category = doc.querySelector("meta[name='category']")?.content?.trim().toLowerCase() || "uncategorized";
 
       const postDate = formatDate(postDateRaw);
       const updateDate = formatDate(updateDateRaw);
 
-      // grab first 20 words of first <p> 💌
       let firstParagraph = doc.querySelector("p")?.textContent || "";
       let preview = firstParagraph.split(/\s+/).slice(0, 20).join(" ");
       if (firstParagraph.split(/\s+/).length > 20) preview += "...";
 
-      // build card ✨
       const card = document.createElement("div");
       card.classList.add("cards-card");
+      card.setAttribute("data-title", title.toLowerCase());
+      card.setAttribute("data-preview", preview.toLowerCase());
+      card.setAttribute("data-post-date", postDateRaw);
+      card.setAttribute("data-update-date", updateDateRaw);
+      card.setAttribute("data-category", category);
 
       const imageHTML = coverImage
-        ? `<img class="cards-image" src="${coverImage}" alt="${title}">`
+        ? `<img class="cards-image" src="${coverImage}" alt="${escapeHTML(title)}">`
         : `<div class="cards-image">NO IMAGE</div>`;
 
       card.innerHTML = `
         ${imageHTML}
-        <h1>${title}</h1>
-        <h3><small>Published: ${postDate} ● Updated: ${updateDate}</small></h3>
+        <h1 class="blog-title">${escapeHTML(title)}</h1>
+        <h3><small>Published: ${escapeHTML(postDate)} | Updated: ${escapeHTML(updateDate)}</small></3h>
         <hr>
-        <p class="preview">${preview}</p>
+        <p class="preview">${escapeHTML(preview)}</p>
         <a href="/blog/${file}">Read More</a>
       `;
 
       grid.appendChild(card);
-
+      cards.push(card);
     } catch (err) {
       console.error("Error loading post:", file, err);
     }
   }
+
+  // Search
+  const searchInput = document.getElementById('blogSearch');
+searchInput.addEventListener('input', () => {
+  const term = searchInput.value.toLowerCase();
+  const items = document.querySelectorAll('.cards-card');
+
+  items.forEach(item => {
+    const textSpan = item.querySelector('.blog-title');
+    const question = textSpan.innerText;
+    const lower = question.toLowerCase();
+
+    if (lower.includes(term)) {
+      item.style.display = 'block';
+
+      // highlight term
+      if (term) {
+        const regex = new RegExp(`(${term})`, 'gi');
+        textSpan.innerHTML = question.replace(regex, '<mark>$1</mark>');
+      } else {
+        textSpan.innerHTML = question; // reset highlight
+      }
+    } else {
+      item.style.display = 'none';
+    }
+  });
+});
+
+document.getElementById("blogSort").addEventListener("change", () => {
+    applyFilters();
+  });
+
+  function applyFilters() {
+    const query = document.getElementById("blogSearch").value.toLowerCase();
+    const sortValue = document.getElementById("blogSort").value;
+
+    let filteredCards = [...cards];
+
+    // Filter by search
+    filteredCards = filteredCards.filter(card => {
+      const inTitle = card.getAttribute("data-title").includes(query);
+      const inPreview = card.getAttribute("data-preview").includes(query);
+      return inTitle || inPreview;
+    });
+
+    // Filter/sort logic
+    if (sortValue === "date-newest" || sortValue === "date-oldest") {
+      filteredCards.sort((a, b) => {
+        const dateA = new Date(a.getAttribute("data-post-date"));
+        const dateB = new Date(b.getAttribute("data-post-date"));
+        return sortValue === "date-newest" ? dateB - dateA : dateA - dateB;
+      });
+    } else if (sortValue === "update-newest" || sortValue === "update-oldest") {
+      filteredCards.sort((a, b) => {
+        const dateA = new Date(a.getAttribute("data-update-date"));
+        const dateB = new Date(b.getAttribute("data-update-date"));
+        return sortValue === "update-newest" ? dateB - dateA : dateA - dateB;
+      });
+    } else if (sortValue.startsWith("category-")) {
+      const category = sortValue.split("-")[1];
+      filteredCards = filteredCards.filter(card => card.getAttribute("data-category") === category);
+    }
+
+    // Re-render grid
+    grid.innerHTML = "";
+    filteredCards.forEach(card => grid.appendChild(card));
+  }
+
+  // Apply default sort on load
+  applyFilters();
 }
 
 loadPosts();
 </script>
+
 
 </body>
 
