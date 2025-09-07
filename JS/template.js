@@ -1,4 +1,5 @@
 document.getElementById("nav").innerHTML = `
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <nav>
         <div id="topnav">
             <a href="/">Home</a>
@@ -24,6 +25,6 @@ document.getElementById("footer").innerHTML = `
 
 document.getElementById("heading").innerHTML = `
     <head>
-        <center><img src="/media/textgradient.png" alt="MAXIROON" style="border-width: 0px; border-radius: 0px;">
+        <center><div class="head"><img src="/media/textgradient.png" alt="MAXIROON" style="border-width: 0px; border-radius: 0px;"></div>
         <hr><br><br>
     </head>`;

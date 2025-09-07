@@ -8,6 +8,10 @@ img { border: 5px solid white; border-radius: 25px; margin: auto}
 html {scroll-behavior: smooth;}
 audio::-webkit-media-controls-enclosure { background-color: #d37c7c; color: #fff; }
 hr {color: white;}
+.head img {width: 25%;}
+@media (max-width: 768px) {
+    .head img {width: 50%;}
+}
 
 /* BUTTON STYLE */
 .button { margin:auto; padding: 20px 10px;  font-size: 16px; cursor: pointer; }
@@ -20,13 +24,17 @@ hr {color: white;}
         .button a.ethereal:hover {background-image: linear-gradient(#ebe78a, #3e717d);}
 
 /* TOPNAV STYLE */
-#topnav { background-image: linear-gradient(#000, #200); height: 50px; object-fit: fill; transition: top 0.3s; position: fixed; top: 0; width: 100%; }
+#topnav { background-image: linear-gradient(#000, #200); height: auto; object-fit: fill; transition: top 0.3s; position: fixed; top: 0; width: 100%; }
     #topnav a { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; }
         #topnav a:hover { background-image: linear-gradient(#000, #f00); }
     #topnav a.ethereal { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; background-image: linear-gradient(#6e6c3f, #233f46); }
         #topnav a.ethereal:hover { background-image: linear-gradient(#ebe78a, #3e717d);}
     #topnav a.cpi { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; background-image: linear-gradient(#19050b, #4b1021); }
         #topnav a.cpi:hover { background-image: linear-gradient(#19050b, #dd3062); }
+@media (max-width: 768px) {
+    #topnav a, #topnav a.ethereal, #topnav a.cpi { font-size: 8px; padding: 10px 12px;}
+    .about-text { padding: 1.5em; }
+}
 .Line { margin: auto; align-items: center; display: block; text-decoration: none;}
     .Line img { width: 100px; border: 3px solid white; border-radius: 10px; transition: transform 0.2s ease, border-color 0.2s ease, filter 0.2s ease;}
         .Line img:hover {transform: scale(1.05); border-color: red; filter: brightness(1.5);}
@@ -37,12 +45,14 @@ hr {color: white;}
 
 .SplitScreen { margin: auto; display: flex; justify-content: center; align-items: center; width: 90%;}
     .SplitScreen a {align-content: center;}
-    .SplitScreen iframe {width: 720px; height: 405px;border-radius: 15px; border: 5px solid white;}
-    .SplitScreen-container {min-width: 720px; min-height: 405px; }
+    .SplitScreen iframe {width: 720px; height: auto; aspect-ratio: 16 / 9; border-radius: 15px; border: 5px solid white;}
+    @media (max-width: 768px) {
+        .SplitScreen iframe {width: 250px;}
+    }
 
 /* CARDS STYLE */
 .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 15px; justify-content: center;}
-.cards-card { background-image: linear-gradient(#f00, #200); border: 5px solid #fff; border-radius: 25px; overflow: hidden; text-align: center; box-shadow: 0px 2px 5px rgba(0,0,0,0.1); transition: border-color 0.3s ease;}
+.cards-card { background-image: linear-gradient(#f00, #200); border: 5px solid #fff; border-radius: 25px; overflow: hidden; text-align: center; box-shadow: 0px 0px 10px rgba(0,0,0,0.75); transition: border-color 0.3s ease;}
     .cards-card hr { width: 80%; margin-left: auto; margin-right: auto; margin-top: 5px; margin-bottom: 5px; }
     .cards-card:hover { background-image: linear-gradient(#800, #800); border-color: red;}
     .cards-card h1 { margin: 10px 0 5px; font-size: 25px; }
@@ -53,9 +63,16 @@ hr {color: white;}
 .cards-image { width: 100%; height: 150px; display: flex; align-items: center; justify-content: center; background: #850000; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
 .center-wrap { display: flex; justify-content: center;}
 select { color: white; background-color: #200;}
+@media (max-width: 800px) {
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .cards-card h1 { font-size: 17px; }
+    .cards-card h3 { font-size: 7px;}
+    .cards-card p { font-size: 9px; }
+    .cards-image {height: 75px;}
+}
 
 /* SONG CARDS STYLE */
-.collection { margin: 5px; background-image: linear-gradient(#800, #500); border-radius: 12px; padding: 20px; width: 750px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 5px solid #fff; border-radius: 25px;}
+.collection { margin: 5px; background-image: linear-gradient(#800, #500); border-radius: 12px; padding: 20px; width: 750px; box-shadow: 0 0px 15px rgba(0,0,0,0.75); border: 5px solid #fff; border-radius: 25px;}
 .header { display: flex; align-items: center;}
     .header img {width: 25%; height: 25%; margin: 0px; margin-right: 0px;}
 .cover { width: 120px; height: 120px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
@@ -81,7 +98,20 @@ input { color: white; background-color: #200;}
 mark { background: #ffffff; color: red; padding: 0 2px; border-radius: 3px; }
 
 .header-image { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #850000; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
-.about-image img { border-left: 0px; border-bottom-left-radius: 0px; border-top-left-radius: 0px;}
+#about { display: flex; flex-wrap: wrap; align-items: center; margin: 2em 0; }
+    .about-image { flex: 1 1 50%; min-width: 300px; } 
+    .about-image img {  width: 100%; height: 100%; object-fit: cover; display: block; border-left: 0px; border-bottom-left-radius: 0px; border-top-left-radius: 0px;}
+    .about-text { flex: 1 1 50%; min-width: 300px; padding: 2em; }
+        .about-text h2 {font-size: 75px;}
+        .about-text p {font-size: 25px;}
+@media (max-width: 768px) {
+  #about { flex-direction: column;}
+    .about-image, .about-text { flex: 1 1 100%; min-width: 100%; width: 100%;}
+    .about-text { padding: 1.5em; }
+        .about-text h2 {font-size: 50px;}
+        .about-text p {font-size: 20px;}
+    .about-image img {border-radius: 0px; width: 100%; border-right: 0px;}
+}
 
 /* 404 */
 .center { height: 100vh; display: flex; justify-content: center; align-items: center; border: 20px solid #f00; border-radius: 50px; }

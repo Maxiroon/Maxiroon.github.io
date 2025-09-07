@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="/CSS/style.css">
 <script src="/JS/JSmain.js"></script>
 
+
 <title>Blog - Maxiroon</title>
 <link rel="icon" href="/media/favicon.ico">
 
@@ -135,10 +136,10 @@ async function loadPosts() {
 
       card.innerHTML = `
         ${imageHTML}
-        <h1 class="blog-title">${escapeHTML(title)}</h1>
-        <h3><small>Published: ${escapeHTML(postDate)} | Updated: ${escapeHTML(updateDate)}</small></3h>
+        <h1>${escapeHTML(title)}</h1>
+        <h3>Published: ${escapeHTML(postDate)} | Updated: ${escapeHTML(updateDate)}</3h>
         <hr>
-        <p class="preview">${escapeHTML(preview)}</p>
+        <p>${escapeHTML(preview)}</p>
         <a href="/blog/${file}">Read More</a>
       `;
 

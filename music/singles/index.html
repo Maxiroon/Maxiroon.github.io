@@ -10,7 +10,20 @@
 
 <script src="/JS/template.js" defer></script>
 <div id="nav"></div>
-
+<style>
+    .center-wrap {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 15px; justify-content: center; }
+    
+        .collection {width: 100%;}
+    @media (max-width: 800px) {
+       .center-wrap {
+            grid-template-columns: repeat(1, 1fr);
+        } 
+        .album-info h2 { margin: 0; font-size: 25px; color: #fff; }
+        .album-info p { margin: 5px 0; color: #aaa; font-size: 10px;}
+        .album-info a { margin: 0; color: #007BFF; text-decoration: none; font-size: 10px;}
+}
+</style>
 <body>
     <h1 style="font-size: 60px;">Singles and Albums</h1>
     <div class="button"><a href="/music" style="padding: 5px 25%;">Back</a></div>
