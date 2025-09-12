@@ -46,15 +46,13 @@ async function loadPosts() {
 
   function formatDate(dateStr) {
     if (!dateStr || dateStr === "Unknown") return "Unknown";
-    // Accepts "YYYY-MM-DD" or "YY-MM-DD" (fallback from filename)
     let y, m, d;
     if (dateStr.includes(".")) {
-      // just in case a dotted format sneaks in
       [y, m, d] = dateStr.split(".").map(Number);
       y = 2000 + (y % 100);
     } else {
       [y, m, d] = dateStr.split("-").map(Number);
-      if (y < 100) y = 2000 + y; // convert 25 -> 2025
+      if (y < 100) y = 2000 + y;
     }
     const local = new Date(y, m - 1, d);
     return local.toLocaleDateString("en-US", {
@@ -126,6 +124,8 @@ async function loadPosts() {
       card.classList.add("cards-card");
       card.setAttribute("data-title", title.toLowerCase());
       card.setAttribute("data-preview", preview.toLowerCase());
+      card.setAttribute("data-title-raw", title);
+      card.setAttribute("data-preview-raw", preview);
       card.setAttribute("data-post-date", postDateRaw);
       card.setAttribute("data-update-date", updateDateRaw);
       card.setAttribute("data-category", category);
@@ -137,7 +137,7 @@ async function loadPosts() {
       card.innerHTML = `
         ${imageHTML}
         <h1>${escapeHTML(title)}</h1>
-        <h3>Published: ${escapeHTML(postDate)} | Updated: ${escapeHTML(updateDate)}</3h>
+        <h3>Published: ${escapeHTML(postDate)} | Updated: ${escapeHTML(updateDate)}</h3>
         <hr>
         <p>${escapeHTML(preview)}</p>
         <a href="/blog/${file}">Read More</a>
@@ -150,36 +150,9 @@ async function loadPosts() {
     }
   }
 
-  // Search
-  const searchInput = document.getElementById('blogSearch');
-searchInput.addEventListener('input', () => {
-  const term = searchInput.value.toLowerCase();
-  const items = document.querySelectorAll('.cards-card');
-
-  items.forEach(item => {
-    const textSpan = item.querySelector('.blog-title');
-    const question = textSpan.innerText;
-    const lower = question.toLowerCase();
-
-    if (lower.includes(term)) {
-      item.style.display = 'block';
-
-      // highlight term
-      if (term) {
-        const regex = new RegExp(`(${term})`, 'gi');
-        textSpan.innerHTML = question.replace(regex, '<mark>$1</mark>');
-      } else {
-        textSpan.innerHTML = question; // reset highlight
-      }
-    } else {
-      item.style.display = 'none';
-    }
-  });
-});
-
-document.getElementById("blogSort").addEventListener("change", () => {
-    applyFilters();
-  });
+  // Event listeners for search + sort
+  document.getElementById("blogSort").addEventListener("change", applyFilters);
+  document.getElementById("blogSearch").addEventListener("input", applyFilters);
 
   function applyFilters() {
     const query = document.getElementById("blogSearch").value.toLowerCase();
@@ -187,14 +160,16 @@ document.getElementById("blogSort").addEventListener("change", () => {
 
     let filteredCards = [...cards];
 
-    // Filter by search
-    filteredCards = filteredCards.filter(card => {
-      const inTitle = card.getAttribute("data-title").includes(query);
-      const inPreview = card.getAttribute("data-preview").includes(query);
-      return inTitle || inPreview;
-    });
+    // Search filter
+    if (query) {
+      filteredCards = filteredCards.filter(card => {
+        const inTitle = card.getAttribute("data-title").includes(query);
+        const inPreview = card.getAttribute("data-preview").includes(query);
+        return inTitle || inPreview;
+      });
+    }
 
-    // Filter/sort logic
+    // Sort / category filter
     if (sortValue === "date-newest" || sortValue === "date-oldest") {
       filteredCards.sort((a, b) => {
         const dateA = new Date(a.getAttribute("data-post-date"));
@@ -209,20 +184,48 @@ document.getElementById("blogSort").addEventListener("change", () => {
       });
     } else if (sortValue.startsWith("category-")) {
       const category = sortValue.split("-")[1];
-      filteredCards = filteredCards.filter(card => card.getAttribute("data-category") === category);
+      filteredCards = filteredCards.filter(
+        card => card.getAttribute("data-category") === category
+      );
     }
 
     // Re-render grid
     grid.innerHTML = "";
-    filteredCards.forEach(card => grid.appendChild(card));
+    if (filteredCards.length > 0) {
+      filteredCards.forEach(card => {
+        const titleRaw = card.getAttribute("data-title-raw");
+        const previewRaw = card.getAttribute("data-preview-raw");
+        const postDate = formatDate(card.getAttribute("data-post-date"));
+        const updateDate = formatDate(card.getAttribute("data-update-date"));
+        const imgEl = card.querySelector(".cards-image")?.outerHTML || "";
+
+        card.innerHTML = `
+          ${imgEl}
+          <h1>${highlight(titleRaw, query)}</h1>
+          <h3>Published: ${escapeHTML(postDate)} | Updated: ${escapeHTML(updateDate)}</h3>
+          <hr>
+          <p>${highlight(previewRaw, query)}</p>
+          <a href="${card.querySelector("a")?.getAttribute("href") || "#"}">Read More</a>
+        `;
+        grid.appendChild(card);
+      });
+    } else {
+      grid.innerHTML = `
+        <div class="no-results">
+          <img src="/media/404.png" alt="No results" style="width:500x; display:block; margin:20px auto; border: 0px;">
+          <h1 style="text-align:center;">No posts found!</h1>
+        </div>
+      `;
+    }
   }
 
-  // Apply default sort on load
+  // Initial run
   applyFilters();
 }
 
 loadPosts();
 </script>
+
 
 
 </body>
