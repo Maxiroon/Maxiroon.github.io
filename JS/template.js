@@ -25,6 +25,8 @@ document.getElementById("footer").innerHTML = `
 
 document.getElementById("heading").innerHTML = `
     <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9640811349836436"
+     crossorigin="anonymous"></script>
         <center><div class="head"><img src="/media/textgradient.png" alt="MAXIROON" style="border-width: 0px; border-radius: 0px;"></div>
         <hr><br><br>
     </head>`;
