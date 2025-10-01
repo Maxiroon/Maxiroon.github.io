@@ -6,10 +6,8 @@
 <link rel="stylesheet" href="/CSS/style.css">
 <script src="/JS/JSmain.js"></script>
 
-
 <title>Blog - Maxiroon</title>
 <link rel="icon" href="/media/favicon.ico">
-
 <script src="/JS/template.js" defer></script>
 <div id="nav"></div>
 
@@ -20,29 +18,42 @@
   <center>
   <h1 style="font-size: 60px;">Maxiroon's Blog</h1>
   <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
-  <input 
-    type="text" 
-    id="blogSearch" 
-    placeholder="Search..." 
-    style="padding: 10px; width: 60%; max-width: 400px; border-radius: 10px; border: 2px solid #ffffff;"
-  >
-  <select id="blogSort" style="padding: 10px; border-radius: 10px; border: 2px solid #ffffff; color: white;">
-    <option value="date-newest">Date: newest</option>
-    <option value="date-oldest">Date: oldest</option>
-    <option value="update-newest">Recently Updated</option>
-    <hr>
-    <option value="category-music">Category: Music</option>
-    <option value="category-website">Category: Website</option>
-    <option value="category-youtube">Category: YouTube</option>
-  </select>
-</div>
-  <div class="cards-grid" id="blogGrid">
-    <!-- Blog Entries go here -->
-  </div></center>
+    <input 
+      type="text" 
+      id="blogSearch" 
+      placeholder="Search..." 
+      style="padding: 10px; width: 60%; max-width: 400px; border-radius: 10px; border: 2px solid #ffffff;"
+    >
+    <select id="blogSort" style="padding: 10px; border-radius: 10px; border: 2px solid #ffffff; color: white;">
+      <option value="date-newest">Date: newest</option>
+      <option value="date-oldest">Date: oldest</option>
+      <option value="update-newest">Recently Updated</option>
+      <hr>
+      <option value="category-music">Category: Music</option>
+      <option value="category-website">Category: Website</option>
+      <option value="category-youtube">Category: YouTube</option>
+      <hr>
+      <option value="date-range">Date range...</option>
+    </select>
+  </div>
+
+  <!-- Hidden date range controls -->
+  <div id="dateRangeControls" style="display:none; margin-bottom:20px;">
+    <label style="color:white;">From: <input type="date" id="dateStart"></label>
+    <label style="color:white; margin-left:10px;">To: <input type="date" id="dateEnd"></label>
+    <button id="applyDateRange" style="margin-left:10px; padding:5px 10px; border-radius:6px; color:white;">Apply</button>
+  </div>
+
+  <div class="cards-grid" id="blogGrid"></div>
+  </center>
 
 <script>
 async function loadPosts() {
   const grid = document.getElementById("blogGrid");
+  const dateControls = document.getElementById("dateRangeControls");
+  const dateStart = document.getElementById("dateStart");
+  const dateEnd = document.getElementById("dateEnd");
+  const applyDateRangeBtn = document.getElementById("applyDateRange");
 
   function formatDate(dateStr) {
     if (!dateStr || dateStr === "Unknown") return "Unknown";
@@ -95,7 +106,7 @@ async function loadPosts() {
     const [bY, bM, bD] = b.replace(".html","").split(".").map(Number);
     const dateA = new Date(2000 + aY, aM - 1, aD);
     const dateB = new Date(2000 + bY, bM - 1, bD);
-    return dateB - dateA; // newest first
+    return dateB - dateA;
   });
 
   const cards = [];
@@ -150,9 +161,35 @@ async function loadPosts() {
     }
   }
 
-  // Event listeners for search + sort
-  document.getElementById("blogSort").addEventListener("change", applyFilters);
+  // Set min/max for date inputs based on first post & today
+  if (cards.length > 0) {
+    let earliestDate = new Date(cards[0].getAttribute("data-post-date"));
+    cards.forEach(card => {
+      const postDate = new Date(card.getAttribute("data-post-date"));
+      if (postDate < earliestDate) earliestDate = postDate;
+    });
+    const yyyy = earliestDate.getFullYear();
+    const mm = String(earliestDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(earliestDate.getDate()).padStart(2, '0');
+    dateStart.min = `${yyyy}-${mm}-${dd}`;
+    dateStart.value = dateStart.min;
+  }
+
+  const today = new Date();
+  dateEnd.max = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+  dateEnd.value = dateEnd.max;
+
+  // Event listeners
+  document.getElementById("blogSort").addEventListener("change", e => {
+    if (e.target.value === "date-range") {
+      dateControls.style.display = "flex";
+    } else {
+      dateControls.style.display = "none";
+      applyFilters();
+    }
+  });
   document.getElementById("blogSearch").addEventListener("input", applyFilters);
+  applyDateRangeBtn.addEventListener("click", applyFilters);
 
   function applyFilters() {
     const query = document.getElementById("blogSearch").value.toLowerCase();
@@ -187,6 +224,15 @@ async function loadPosts() {
       filteredCards = filteredCards.filter(
         card => card.getAttribute("data-category") === category
       );
+    } else if (sortValue === "date-range") {
+      const start = dateStart.value ? new Date(dateStart.value) : null;
+      const end = dateEnd.value ? new Date(dateEnd.value) : null;
+      if (start || end) {
+        filteredCards = filteredCards.filter(card => {
+          const postDate = new Date(card.getAttribute("data-post-date"));
+          return (!start || postDate >= start) && (!end || postDate <= end);
+        });
+      }
     }
 
     // Re-render grid
@@ -212,7 +258,7 @@ async function loadPosts() {
     } else {
       grid.innerHTML = `
         <div class="no-results">
-          <img src="/media/404.png" alt="No results" style="width:500x; display:block; margin:20px auto; border: 0px;">
+          <img src="/media/404.png" alt="No results" style="width:500px; display:block; margin:20px auto; border: 0px;">
           <h1 style="text-align:center;">No posts found!</h1>
         </div>
       `;
@@ -225,7 +271,6 @@ async function loadPosts() {
 
 loadPosts();
 </script>
-
 
 
 </body>

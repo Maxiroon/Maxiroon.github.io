@@ -1,12 +1,12 @@
 /* PAGE STYLE */
 * { padding: 0; margin: 0; box-sizing: border-box; font-family: lexend; font-weight: bold; color: white; text-align: center;}
-body { background: #400; background-image: linear-gradient(#800, #400); background-attachment: fixed; }
+body { background: #024; background-image: linear-gradient(#048, #024); background-attachment: fixed; }
 p {margin-left: 2%; margin-right: 2%;}
-footer { background: #000; width: 100%; font-size: 10px; font-family: lexend; color: white; text-decoration: none; }
+footer { background: #002; width: 100%; font-size: 10px; font-family: lexend; color: white; text-decoration: none; }
 ul { font-family: lexend; color: white; }
 img { border: 5px solid white; border-radius: 25px; margin: auto} 
 html {scroll-behavior: smooth;}
-audio::-webkit-media-controls-enclosure { background-color: #d37c7c; color: #fff; }
+audio::-webkit-media-controls-enclosure { background-color: #7c9ad3; color: #fff; }
 hr {color: white;}
 .head img {width: 25%;}
 @media (max-width: 768px) {
@@ -15,8 +15,8 @@ hr {color: white;}
 
 /* BUTTON STYLE */
 .button { margin:auto; padding: 20px 10px;  font-size: 16px; cursor: pointer; }
-    .button a { background-image: linear-gradient(#500, #200); padding: 10px 20px; border-radius: 25px; border: solid white 3px; text-decoration: none;}
-        .button a:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
+    .button a { background-image: linear-gradient(#025, #012); padding: 10px 20px; border-radius: 25px; border: solid white 3px; text-decoration: none;}
+        .button a:hover { background-image: linear-gradient(#08f, #025); border-color: lightblue;}
         .button a:active { background-image: linear-gradient(#000, #000); border-color: #000;}
     .button a.cpi {background-image: linear-gradient(#4b1021, #19050b);}
         .button a.cpi:hover {background-image: linear-gradient(#dd3062, #dd3062);}
@@ -24,9 +24,9 @@ hr {color: white;}
         .button a.ethereal:hover {background-image: linear-gradient(#ebe78a, #3e717d);}
 
 /* TOPNAV STYLE */
-#topnav { background-image: linear-gradient(#000, #200); height: auto; object-fit: fill; transition: top 0.3s; position: fixed; top: 0; width: 100%; }
+#topnav { background-image: linear-gradient(#012, #024); height: auto; object-fit: fill; transition: top 0.3s; position: fixed; top: 0; width: 100%; }
     #topnav a { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; }
-        #topnav a:hover { background-image: linear-gradient(#000, #f00); }
+        #topnav a:hover { background-image: linear-gradient(#012, #08f); }
     #topnav a.ethereal { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; background-image: linear-gradient(#6e6c3f, #233f46); }
         #topnav a.ethereal:hover { background-image: linear-gradient(#ebe78a, #3e717d);}
     #topnav a.cpi { float: left; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; background-image: linear-gradient(#19050b, #4b1021); }
@@ -37,10 +37,10 @@ hr {color: white;}
 }
 .Line { margin: auto; align-items: center; display: block; text-decoration: none;}
     .Line img { width: 100px; border: 3px solid white; border-radius: 10px; transition: transform 0.2s ease, border-color 0.2s ease, filter 0.2s ease;}
-        .Line img:hover {transform: scale(1.05); border-color: red; filter: brightness(1.5);}
+        .Line img:hover {transform: scale(1.05); border-color: lightblue; filter: brightness(1.5);}
         .Line img:active { transform: scale(0.95); border-color: black; filter: brightness(0.5);}
-    .Line a.button { margin: 5px; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
-        .Line a.button:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
+    .Line a.button { margin: 5px; background-image: linear-gradient(#025, #012); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
+        .Line a.button:hover { background-image: linear-gradient(#08f, #025); border-color: lightblue;}
         .Line a.button:active { background-image: linear-gradient(#000, #000); border-color: #000;}
 
 .SplitScreen { margin: auto; display: flex; justify-content: center; align-items: center; width: 90%;}
@@ -52,17 +52,17 @@ hr {color: white;}
 
 /* CARDS STYLE */
 .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 15px; justify-content: center;}
-.cards-card { background-image: linear-gradient(#f00, #200); border: 5px solid #fff; border-radius: 25px; overflow: hidden; text-align: center; box-shadow: 0px 0px 10px rgba(0,0,0,0.75); transition: border-color 0.3s ease;}
+.cards-card { background-image: linear-gradient(#08f, #012); border: 5px solid #fff; border-radius: 25px; overflow: hidden; text-align: center; box-shadow: 0px 0px 10px rgba(0,0,0,0.75); transition: border-color 0.3s ease;}
     .cards-card hr { width: 80%; margin-left: auto; margin-right: auto; margin-top: 5px; margin-bottom: 5px; }
-    .cards-card:hover { background-image: linear-gradient(#800, #800); border-color: red;}
+    .cards-card:hover { background-image: linear-gradient(#08f, #08f); border-color: lightblue;}
     .cards-card h1 { margin: 10px 0 5px; font-size: 25px; }
     .cards-card h3 { margin: 0px; font-size: 14px;}
     .cards-card p { font-size: 14px; color: white; margin: 0px; min-height: 40px; }
-    .cards-card a { display: inline-block; margin: 5px; padding: 6px 12px; text-decoration: none; color: white; background: #e24a4a; border-radius: 6px; transition: background 0.2s; }
-        .cards-card a:hover { background: #bd3535; }
-.cards-image { width: 100%; height: 150px; display: flex; align-items: center; justify-content: center; background: #850000; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
+    .cards-card a { display: inline-block; margin: 5px; padding: 6px 12px; text-decoration: none; color: white; background: #4a66e2; border-radius: 6px; transition: background 0.2s; }
+        .cards-card a:hover { background: #3555bd; }
+.cards-image { width: 100%; height: 150px; display: flex; align-items: center; justify-content: center; background: #002385; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
 .center-wrap { display: flex; justify-content: center;}
-select { color: white; background-color: #200;}
+select { color: white; background-color: #012;}
 @media (max-width: 800px) {
     .cards-grid { grid-template-columns: repeat(2, 1fr); }
     .cards-card h1 { font-size: 17px; }
@@ -72,7 +72,7 @@ select { color: white; background-color: #200;}
 }
 
 /* SONG CARDS STYLE */
-.collection { margin: 5px; background-image: linear-gradient(#800, #500); border-radius: 12px; padding: 20px; width: 750px; box-shadow: 0 0px 15px rgba(0,0,0,0.75); border: 5px solid #fff; border-radius: 25px;}
+.collection { margin: 5px; background-image: linear-gradient(#08f, #025); border-radius: 12px; padding: 20px; width: 750px; box-shadow: 0 0px 15px rgba(0,0,0,0.75); border: 5px solid #fff; border-radius: 25px;}
 .header { display: flex; align-items: center;}
     .header img {width: 25%; height: 25%; margin: 0px; margin-right: 0px;}
 .cover { width: 120px; height: 120px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
@@ -83,23 +83,23 @@ select { color: white; background-color: #200;}
 
 /* HOME PAGE STYLES */
 .dropdown { position: relative; }
-    .dropdown-button { background: #ff0000; color: white; padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
-    .dropdown-menu { display: none; position: absolute; top: 45px; left: 0; background: #772828; border: 1px solid #ddd; border-radius: 10px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10;}
+    .dropdown-button { background: #08f; color: white; padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+    .dropdown-menu { display: none; position: absolute; top: 45px; left: 0; background: #012; border: 1px solid #ddd; border-radius: 10px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10;}
         .dropdown-menu a { display: block; padding: 10px 15px; text-decoration: none; color: white; border-bottom: 1px solid #eee; }
             .dropdown-menu a:hover { background: #fff; color: black; }
   .dropdown.show .dropdown-menu { display: block; }
 .faq-question { width: 100%; text-align: left; background: none; border: none; font-size: 1.1em; padding: 0.5em 0.5em; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
     .faq-question.active .arrow { transform: rotate(180deg); }
-.faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s ease, opacity 0.5s ease; padding: 0 1em; background: #f9f9f9; border-left: 5px solid #f00; padding: 5px 0px; border-radius: 10px;
+.faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s ease, opacity 0.5s ease; padding: 0 1em; background: #fff; border-left: 5px solid #08f; padding: 5px 0px; border-radius: 10px;
 }    .faq-answer p {color: black;}
     .faq-answer.show { opacity: 1; max-height: 1000px; }
 .arrow { transition: transform 0.3s; }
-input { color: white; background-color: #200;}
-mark { background: #ffffff; color: red; padding: 0 2px; border-radius: 3px; }
-.highlight { background: #ffffff; color: red; padding: 0 2px; border-radius: 3px; }
+input { color: white; background-color: #012;}
+mark { background: #ffffff; color: blue; padding: 0 2px; border-radius: 3px; }
+.highlight { background: #ffffff; color: blue; padding: 0 2px; border-radius: 3px; }
 
 
-.header-image { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #850000; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
+.header-image { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #048; color: #fff; font-weight: bold; font-size: 25px; object-fit: cover; border: 0px; border-radius: 0px; }
 #about { display: flex; flex-wrap: wrap; align-items: center; margin: 2em 0; }
     .about-image { flex: 1 1 50%; min-width: 300px; } 
     .about-image img {  width: 100%; height: 100%; object-fit: cover; display: block; border-left: 0px; border-bottom-left-radius: 0px; border-top-left-radius: 0px;}
@@ -116,9 +116,9 @@ mark { background: #ffffff; color: red; padding: 0 2px; border-radius: 3px; }
 }
 
 /* 404 */
-.center { height: 100vh; display: flex; justify-content: center; align-items: center; border: 20px solid #f00; border-radius: 50px; }
-    .center a.button { margin: 5px; background-image: linear-gradient(#500, #200); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
-        .center a.button:hover { background-image: linear-gradient(#f00, #500); border-color: red;}
+.center { height: 100vh; display: flex; justify-content: center; align-items: center; border: 20px solid lightblue; border-radius: 50px; }
+    .center a.button { margin: 5px; background-image: linear-gradient(#025, #012); padding: 10px 20px; text-decoration: none; font-size: 16px; cursor: pointer; border-radius: 25px; border: solid white 3px;}
+        .center a.button:hover { background-image: linear-gradient(#08f, #025); border-color: lightblue;}
         .center a.button:active { background-image: linear-gradient(#000, #000); border-color: #000;}
 
 .no-results {
@@ -137,4 +137,66 @@ mark { background: #ffffff; color: red; padding: 0 2px; border-radius: 3px; }
 .no-results p {
   font-size: 16px;
   color: white;
+}
+
+/* Date range controls */
+#dateRangeControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 20px;
+  flex-wrap: wrap;
+}
+
+#dateRangeControls label {
+  color: white;
+  font-size: 14px;
+}
+
+#dateRangeControls input[type="date"] {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+  background-color: #012;  /* dark theme */
+  color: white;
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Make the calendar icon match */
+#dateRangeControls input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* turns it white */
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#dateRangeControls input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Firefox-specific tweak */
+#dateRangeControls input[type="date"]::-moz-focus-inner {
+  border: 0;
+}
+#dateRangeControls input[type="date"]::-moz-placeholder {
+  color: white;
+}
+
+/* Apply button */
+#dateRangeControls button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background: #200;
+  color: white;
+  font-family: 'Lexend', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#dateRangeControls button:hover {
+  background: lightblue;
 }
