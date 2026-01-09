@@ -56,7 +56,7 @@ async function loadPosts() {
   const applyDateRangeBtn = document.getElementById("applyDateRange");
 
   function formatDate(dateStr) {
-    if (!dateStr || dateStr === "Unknown") return "Unknown";
+    if (!dateStr || dateStr === "Unknown") return "Never";
     let y, m, d;
     if (dateStr.includes(".")) {
       [y, m, d] = dateStr.split(".").map(Number);
@@ -120,7 +120,7 @@ async function loadPosts() {
 
       const title = doc.querySelector("h1")?.textContent.trim() || "Untitled";
       const postDateRaw = doc.querySelector("meta[name='post-date']")?.content || file.split(".").slice(0,3).join("-");
-      const updateDateRaw = doc.querySelector("meta[name='update-date']")?.content || postDateRaw;
+      const updateDateRaw = doc.querySelector("meta[name='update-date']")?.content?.trim() || "";
       const coverImage = doc.querySelector("meta[name='cover-image']")?.content || "";
       const category = doc.querySelector("meta[name='category']")?.content?.trim().toLowerCase() || "uncategorized";
 

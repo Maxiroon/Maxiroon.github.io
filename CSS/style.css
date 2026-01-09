@@ -2,6 +2,7 @@
 * { padding: 0; margin: 0; box-sizing: border-box; font-family: lexend; font-weight: bold; color: white; text-align: center;}
 body { background: #024; background-image: linear-gradient(#048, #024); background-attachment: fixed; }
 p {margin-left: 2%; margin-right: 2%;}
+  p.blog {margin-left: 20%; margin-right: 20%; padding: 5px; font-size: 25px;}
 footer { background: #002; width: 100%; font-size: 10px; font-family: lexend; color: white; text-decoration: none; }
 ul { font-family: lexend; color: white; }
 img { border: 5px solid white; border-radius: 25px; margin: auto} 
